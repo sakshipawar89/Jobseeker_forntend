@@ -1,0 +1,79 @@
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7fb;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background: #343a40;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+  }
+  
+  .sidebar h4 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 15px 0;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .sidebar a:hover {
+    text-decoration: underline;
+  }
+  
+  .main-content {
+    margin-left: 220px;
+    padding: 20px;
+  }
+  
+  .job-cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .job-card {
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .job-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .job-card button {
+    margin-top: 10px;
+  }
+  
+  .chart-container {
+    margin: 20px 0;
+  }
+  
+  .graphs-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
