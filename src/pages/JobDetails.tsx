@@ -54,7 +54,7 @@ function JobDetails() {
       if (!token) {
         alert('You must be logged in to apply.');
         return;
-      }
+      } 
 
       await axios.post('http://localhost:8000/applications', formData, {
         headers: {
