@@ -58,7 +58,7 @@ function JobDetails() {
       await axios.post('https://jobseeker-backen.onrender.com/applications', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
+          
         },
       });
 
