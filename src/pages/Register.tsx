@@ -31,7 +31,7 @@ const Register = () => {
 
     try {
       console.log('🟡 Sending POST request to backend...');
-      const response = await fetch('https://jobseeker-backend.onrender.com/register', {
+      const response = await fetch('https://jobseeker-backen.onrender.com/register', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(formData),
