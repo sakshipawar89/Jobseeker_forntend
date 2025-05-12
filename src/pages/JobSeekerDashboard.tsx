@@ -19,7 +19,7 @@ const JobSeekerDashboard: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/getapplications')
+    axios.get('https://jobseeker-backen.onrender.com/getapplications')
       .then(res => setApplications(res.data))
       .catch(err => console.error('Failed to fetch applications', err));
   }, []);
