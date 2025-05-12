@@ -95,9 +95,7 @@ const Login = () => {
           >
             Sign In
           </button>
-          <p className='text-center py-2'>
-            Don't already have an account? <a href="/register" className="text-blue-600 hover:underline">Register</a>
-          </p>
+          
         </form>
       </div>
     </div>
