@@ -29,7 +29,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://jobseeker-backen.onrender.com/register', {
+      const response = await fetch('https://jobseeker-backen.onrender.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,9 +42,9 @@ const Register = () => {
       if (response.ok) {
         setSuccessMessage('Registration successful! You can now log in.');
         setError('');
-        setTimeout(() => navigate('/login'), 3000); // Navigate to login after 3 seconds
+        setTimeout(() => navigate('/login'), 3000);
       } else {
-        setError(data.msg);
+        setError(data.msg || 'Registration failed.');
         setSuccessMessage('');
       }
     } catch (err) {
