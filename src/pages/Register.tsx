@@ -29,7 +29,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://jobseeker-backen.onrender.com/api/register', {
+      const response = await fetch('https://jobseeker-backen.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
