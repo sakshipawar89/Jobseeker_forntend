@@ -14,7 +14,7 @@ function Jobs() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/getdatajobs')
+      .get('https://jobseeker-backen.onrender.com/getdatajobs')
       .then((response) => {
         setJobs(response.data);
         setLoading(false);
