@@ -22,7 +22,7 @@ function JobDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/getdatajobs/${id}`)
+      .get(`https://jobseeker-backen.onrender.com/getdatajobs/${id}`)
       .then((response) => {
         setJob(response.data);
         setLoading(false);
@@ -48,15 +48,14 @@ function JobDetails() {
     }
 
     try {
-      const token = localStorage.getItem('token'); // ✅ matches login
-
+      const token = localStorage.getItem('token');
 
       if (!token) {
         alert('You must be logged in to apply.');
         return;
-      } 
+      }
 
-      await axios.post('http://localhost:8000/applications', formData, {
+      await axios.post('https://jobseeker-backen.onrender.com/applications', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
