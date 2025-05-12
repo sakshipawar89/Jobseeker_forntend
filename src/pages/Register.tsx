@@ -139,7 +139,7 @@ const Register = () => {
           >
             Create Account
           </button>
-          <p className='text-center py-2'>
+          <p className="text-center py-2">
             Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
           </p>
         </form>
