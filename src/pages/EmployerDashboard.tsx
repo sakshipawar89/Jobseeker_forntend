@@ -5,6 +5,9 @@ import {
   PieChart, Pie, Cell
 } from 'recharts';
 
+// ---------------- Config ----------------
+const BASE_URL = 'https://jobseeker-backen.onrender.com';
+
 // ---------------- Types ----------------
 type Job = {
   _id?: string;
@@ -69,17 +72,17 @@ const EmployerDashboard: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const fetchJobs = async () => {
-    const res = await axios.get('http://localhost:8000/getdatajobs');
+    const res = await axios.get(`${BASE_URL}/getdatajobs`);
     setJobs(res.data);
   };
 
   const fetchApplications = async () => {
-    const res = await axios.get('http://localhost:8000/getapplications');
+    const res = await axios.get(`${BASE_URL}/getapplications`);
     setApplications(res.data);
   };
 
   const updateApplicationStatus = async (id: string, status: 'selected' | 'rejected') => {
-    await axios.put(`http://localhost:8000/applications/${id}/status`, { status });
+    await axios.put(`${BASE_URL}/applications/${id}/status`, { status });
     fetchApplications();
   };
 
@@ -126,16 +129,16 @@ const EmployerDashboard: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
-      await axios.put(`http://localhost:8000/updatejobs/${editingId}`, form);
+      await axios.put(`${BASE_URL}/updatejobs/${editingId}`, form);
     } else {
-      await axios.post('http://localhost:8000/postdatajobs', form);
+      await axios.post(`${BASE_URL}/postdatajobs`, form);
     }
     closeModal();
     fetchJobs();
   };
 
   const handleDelete = async (id: string) => {
-    await axios.delete(`http://localhost:8000/deletejobs/${id}`);
+    await axios.delete(`${BASE_URL}/deletejobs/${id}`);
     fetchJobs();
   };
 
@@ -311,14 +314,14 @@ const EmployerDashboard: React.FC = () => {
                     <td className="p-2">{app.coverLetter || '-'}</td>
                     <td className="p-2">
                       {app.cv?.path ? (
-                      <a
-                      href={`http://localhost:8000/uploads/${encodeURIComponent(app.cv.filename)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 underline"
-                    >
-                      Download
-                    </a>
+                        <a
+                          href={`${BASE_URL}/uploads/${encodeURIComponent(app.cv.filename)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline"
+                        >
+                          Download
+                        </a>
                       ) : 'No CV'}
                     </td>
                     <td className="p-2 capitalize">{app.status}</td>
