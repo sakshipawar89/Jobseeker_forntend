@@ -27,8 +27,10 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('🔵 Form submitted:', formData);
 
     try {
+      console.log('🟡 Sending POST request to backend...');
       const response = await fetch('https://jobseeker-backen.onrender.com/register', {
         method: 'POST',
         headers: {
@@ -37,18 +39,30 @@ const Register = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      console.log('🟢 Response received:', response);
+
+      let data;
+      try {
+        data = await response.json();
+        console.log('🟢 Parsed JSON response:', data);
+      } catch (jsonError) {
+        console.error('❌ Failed to parse JSON:', jsonError);
+        throw new Error('Invalid JSON response from server.');
+      }
 
       if (response.ok) {
+        console.log('✅ Registration successful:', data);
         setSuccessMessage('Registration successful! You can now log in.');
         setError('');
         setTimeout(() => navigate('/login'), 3000);
       } else {
+        console.warn('⚠️ Registration failed with error:', data.msg || data);
         setError(data.msg || 'Registration failed.');
         setSuccessMessage('');
       }
-    } catch (err) {
-      setError('An error occurred while registering.');
+    } catch (err: any) {
+      console.error('🔥 Network or fetch error:', err);
+      setError('An error occurred while registering. See console for details.');
       setSuccessMessage('');
     }
   };
@@ -149,3 +163,4 @@ const Register = () => {
 };
 
 export default Register;
+
